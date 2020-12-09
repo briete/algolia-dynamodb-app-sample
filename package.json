@@ -1,0 +1,47 @@
+{
+  "name": "algolia-full-text-search-sample",
+  "version": "0.1.0",
+  "bin": {
+    "infra": "bin/infra.js"
+  },
+  "scripts": {
+    "dist": "yarn clean && yarn build && yarn bundle",
+    "build": "tsc",
+    "bundle": "shx mkdir -p dist/layer/nodejs && shx cp package.json dist/layer/nodejs && shx cp yarn.lock dist/layer/nodejs && yarn --cwd dist/layer/nodejs --production install",
+    "clean": "shx rm -rf dist/ && shx rm -rf cdk.out/",
+    "deploy": "yarn dist && cdk deploy",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "aws-cdk": "1.76.0",
+    "@aws-cdk/assert": "1.76.0",
+    "@aws-cdk/aws-apigatewayv2": "1.76.0",
+    "@aws-cdk/aws-apigatewayv2-integrations": "1.76.0",
+    "@aws-cdk/aws-dynamodb": "1.76.0",
+    "@aws-cdk/aws-lambda": "1.76.0",
+    "@aws-cdk/aws-lambda-event-sources": "1.76.0",
+    "@types/aws-lambda": "^8.10.64",
+    "@types/jest": "^26.0.10",
+    "@types/node": "10.17.27",
+    "@typescript-eslint/eslint-plugin": "^4.9.0",
+    "@typescript-eslint/parser": "^4.9.0",
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "jest": "^26.4.2",
+    "prettier": "^2.2.1",
+    "shx": "^0.3.3",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7"
+  },
+  "dependencies": {
+    "@aws-cdk/core": "1.76.0",
+    "@types/uuid": "^8.3.0",
+    "algoliasearch": "^4.8.3",
+    "aws-sdk": "^2.804.0",
+    "source-map-support": "^0.5.16",
+    "uuid": "^8.3.1"
+  }
+}
